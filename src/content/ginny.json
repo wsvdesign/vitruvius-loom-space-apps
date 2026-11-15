@@ -1,0 +1,49 @@
+{
+  "voice": {
+    "provider": "Kokoro",
+    "name": "Heart",
+    "voiceId": "af_heart",
+    "model": "onnx-community/Kokoro-82M-v1.0-ONNX (q8)",
+    "license": "Apache-2.0",
+    "chosenBy": "Natalie Walker, November 14, 2026"
+  },
+  "beats": [
+    "Welcome to the Moon. People left machines here.",
+    "This is Tranquility Base, in Mare Tranquillitatis. The Moon has almost no atmosphere, so a spacesuit is a life-support system: Armstrong's had up to 21 layers and was built for temperatures from minus 250 to plus 230 degrees Fahrenheit.",
+    "That gold structure is the descent stage of the Lunar Module Eagle. It served as the launch pad for the ascent stage, and it has stood here since July 20, 1969.",
+    "Ask me about the descent stage, the Passive Seismic Experiment, or the Laser Ranging Retroreflector, or type your own question. My answers come from NASA and Smithsonian records."
+  ],
+  "answers": {
+    "gold": {
+      "title": "Multilayer insulation",
+      "body": "That gold isn't metal foil. It's multilayer insulation: thin plastic film coated with aluminum, layered into blankets of up to 25 layers. It reflects the Sun's heat and insulates the spacecraft.",
+      "src": "Smithsonian National Air and Space Museum · Apollo 11 Launch Vehicle and Spacecraft",
+      "url": "https://airandspace.si.edu/explore/stories/apollo-11-launch-vehicle-and-spacecraft"
+    },
+    "temp": {
+      "title": "Daytime and nightfall",
+      "body": "Near the equator, the lunar surface heats to over 250°F (121°C) in daylight and drops to −208°F (−133°C) after nightfall. With almost no atmosphere to trap or spread the Sun's energy, sunlit and shadowed ground are extremely different. Watch the lighting change.",
+      "src": "NASA Science · Weather on the Moon",
+      "url": "https://science.nasa.gov/moon/weather-on-the-moon/"
+    },
+    "dust": {
+      "title": "Lunar regolith",
+      "body": "The Moon's soil, called regolith, is made of rough, jagged grains. Very little on the Moon wears them smooth, so they cling to spacesuits and wear down fabric, seals and faceplates. Apollo crews reported a pungent smell, not unlike gunpowder. The spray you see is rocket exhaust from a landing. The Moon has no wind.",
+      "src": "NASA Science · 10 Things: Dust in the Wind",
+      "url": "https://science.nasa.gov/solar-system/10-things-dust-in-the-wind-on-mars-and-well-beyond/"
+    },
+    "water": {
+      "title": "Water and ice",
+      "body": "Yes. Water ice is trapped in permanently shadowed regions near the lunar poles, where sunlight never reaches. In 2020 NASA also detected water molecules in sunlit soil: roughly a 12-ounce bottle's worth spread through a cubic meter. That isn't ice. Tranquility Base is near the equator, far from the polar ice.",
+      "src": "NASA Science · Water & Ices on the Moon",
+      "url": "https://science.nasa.gov/moon/moon-water-and-ices/"
+    },
+    "laser": {
+      "title": "Still working: the Laser Ranging Retroreflector",
+      "body": "Yes. Apollo 11 left a Laser Ranging Retroreflector: a 46 by 46 centimeter panel of 100 reflectors that needs no power. Observatories on Earth fire lasers at it and time the reflection to measure the distance to the Moon. More than 50 years later, it still returns data.",
+      "src": "NASA Goddard · International Laser Ranging Service, Apollo 11 retroreflector",
+      "url": "https://ilrs.gsfc.nasa.gov/missions/satellite_missions/current_missions/ap11_general.html"
+    }
+  },
+  "quake": "This is real data from the Apollo 12 Passive Seismic Experiment. On November 20, 1969, the crew sent their empty ascent stage, Intrepid, into the surface on purpose. The seismometer recorded strong shaking for more than half an hour and weaker signals for about an hour. Seismic waves are too low to hear, so the recording is audified: played faster."
+}

@@ -1,0 +1,765 @@
+/* VITRUVIUS // LOOM — a telescope on a quiet page. Light by default (the PRD's white page), dark when the system is. */
+
+:root {
+  --bg: #fafafa;
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --mute: #6b7280;
+  --hair: rgba(10, 10, 10, 0.14);
+  --barrel: #ececef; /* telescope body around the eyepiece; read by the 3D rim */
+  --holo: #22d3ee;
+  --holo-deep: #0e7490;
+  --gold: #b8862b;
+  --glass: rgba(255, 255, 255, 0.86);
+  --shadow: rgba(10, 10, 12, 0.16);
+  --font-display: 'Space Grotesk', 'Helvetica Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --ts: 1; /* text size, set by the A A A setting */
+  color-scheme: light;
+}
+
+/* black page only when the visitor picks it (PAGE · WHITE / BLACK); never because of the computer's setting */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #09090b;
+  --paper: #131316;
+  --ink: #f4f4f5;
+  --mute: #9ca3af;
+  --hair: rgba(244, 244, 245, 0.16);
+  --barrel: #0a0a0c;
+  --holo-deep: #67e8f9;
+  --glass: rgba(19, 19, 22, 0.82);
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+canvas { display: block; }
+.canvas-holder { position: fixed; inset: 0; }
+.canvas-holder.telescope canvas { cursor: grab; }
+.canvas-holder.telescope canvas:active { cursor: grabbing; }
+
+/* ---------- telescope page ---------- */
+
+.scope-ui {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* the name: always top centre, kicker beneath, on every page */
+.page-title {
+  position: fixed;
+  top: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: min(70vw, 1000px);
+  pointer-events: none;
+  z-index: 15;
+}
+.page-title h1 {
+  font-weight: 500;
+  font-size: calc(clamp(34px, 5.4vw, 68px) * var(--ts));
+  letter-spacing: -0.015em;
+  line-height: 1;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+/* on the surface the name shrinks a little so the world gets the room */
+.page-title.surface { top: 18px; }
+.page-title.surface h1 { font-size: calc(clamp(26px, 3.4vw, 44px) * var(--ts)); margin-bottom: 8px; }
+
+/* one voice for every line of small type: the kicker, the hint, the marks */
+.page-title .kicker,
+.scope-hint,
+.mark-label,
+.edge {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: calc(clamp(13px, 1.45vw, 17px) * var(--ts));
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.page-title .kicker { opacity: 0.72; }
+.page-title.surface .kicker { font-size: calc(clamp(11px, 1.1vw, 14px) * var(--ts)); }
+
+/* settings as symbols: ☀ ☾ for the page, A A A for text size. Glyphs you tap, not buttons. */
+.settings {
+  position: fixed;
+  z-index: 16;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  color: var(--mute);
+  translate: calc(var(--px, 0) * -5px) calc(var(--py, 0) * -4px);
+}
+.settings.telescope { right: 28px; top: 156px; }
+.settings.surface { right: 28px; top: 26px; }
+.set-group { display: flex; gap: 6px; align-items: center; }
+.set-group + .set-group { padding-left: 20px; border-left: 1px solid var(--hair); }
+.settings [role='radio'] {
+  cursor: pointer;
+  min-width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--mute);
+  line-height: 1;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.settings [role='radio']:hover { color: var(--ink); }
+.settings [role='radio'].on { color: var(--ink); background: color-mix(in srgb, var(--ink) 9%, transparent); }
+.settings [role='radio']:focus-visible { outline: 2px solid var(--holo); outline-offset: 2px; }
+.settings .sym { font-size: 20px; }
+.settings .a { font-family: var(--font-display); font-weight: 500; }
+.settings .a-small { font-size: 13px; }
+.settings .a-normal { font-size: 18px; }
+.settings .a-large { font-size: 24px; }
+
+/* ---------- depth: each glass layer drifts by a different amount against the pointer ---------- */
+.page-title { translate: calc(var(--px, 0) * -9px) calc(var(--py, 0) * -6px); }
+.scope-readout { translate: calc(var(--px, 0) * -6px) calc(var(--py, 0) * -5px); }
+.scope-hint { translate: calc(var(--px, 0) * -7px) calc(var(--py, 0) * -4px); }
+.hud-keys, .compass { translate: calc(var(--px, 0) * -5px) calc(var(--py, 0) * -4px); }
+.frame-marks { translate: calc(var(--px, 0) * -3px) calc(var(--py, 0) * -2px); }
+
+/* compass strip across the top of the glasses */
+.compass {
+  position: fixed;
+  top: 128px;
+  left: 50%;
+  width: min(520px, 44vw);
+  margin-left: calc(min(520px, 44vw) / -2);
+  height: 46px;
+  z-index: 12;
+  pointer-events: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+.compass-window {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+.compass-strip { position: absolute; left: 50%; top: 0; height: 100%; will-change: transform; }
+.compass .tick { position: absolute; bottom: 0; transform: translateX(-50%); display: flex; flex-direction: column-reverse; align-items: center; gap: 4px; }
+.compass .tick i { display: block; width: 1px; height: 8px; background: rgba(255, 255, 255, 0.55); }
+.compass .tick.num i { height: 11px; background: rgba(255, 255, 255, 0.8); }
+.compass .tick.cardinal i { height: 14px; background: #fff; }
+.compass .tick em { font-style: normal; font-size: calc(12px * var(--ts)); letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.85); }
+.compass .tick.cardinal em { color: #fff; font-size: calc(14px * var(--ts)); }
+.compass-needle { position: absolute; left: 50%; bottom: -7px; width: 0; height: 0; margin-left: -5px; border: 5px solid transparent; border-bottom-color: var(--holo); }
+.compass-deg { position: absolute; left: 50%; top: calc(100% + 8px); transform: translateX(-50%); font-size: calc(11px * var(--ts)); letter-spacing: 0.2em; color: var(--holo); }
+
+/* the surface world sits in a framed window on the page, like looking through glasses */
+.canvas-holder.framed {
+  inset: 112px 20px 20px 20px;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px var(--shadow), 0 0 0 1px var(--hair);
+}
+.frame-marks {
+  position: fixed;
+  inset: 112px 20px 20px 20px;
+  pointer-events: none;
+  z-index: 11;
+  --c: rgba(255, 255, 255, 0.75);
+  --m: 34px;
+  background:
+    linear-gradient(var(--c), var(--c)) 18px 18px / var(--m) 1.5px no-repeat,
+    linear-gradient(var(--c), var(--c)) 18px 18px / 1.5px var(--m) no-repeat,
+    linear-gradient(var(--c), var(--c)) calc(100% - 18px) 18px / var(--m) 1.5px no-repeat,
+    linear-gradient(var(--c), var(--c)) calc(100% - 18px) 18px / 1.5px var(--m) no-repeat,
+    linear-gradient(var(--c), var(--c)) 18px calc(100% - 18px) / var(--m) 1.5px no-repeat,
+    linear-gradient(var(--c), var(--c)) 18px calc(100% - 18px) / 1.5px var(--m) no-repeat,
+    linear-gradient(var(--c), var(--c)) calc(100% - 18px) calc(100% - 18px) / var(--m) 1.5px no-repeat,
+    linear-gradient(var(--c), var(--c)) calc(100% - 18px) calc(100% - 18px) / 1.5px var(--m) no-repeat;
+}
+
+/* reticle at the centre of the eyepiece; brightens as a world comes under it */
+.reticle {
+  position: fixed;
+  left: 50%;
+  top: 56.5%; /* = APERTURE_CY in SpaceScene.tsx */
+  width: min(14vmin, 120px);
+  height: min(14vmin, 120px);
+  transform: translate(-50%, -50%);
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
+}
+.reticle .h, .reticle .v {
+  position: absolute;
+  background: #fff;
+  opacity: 0.8;
+}
+.reticle .h { left: 0; right: 0; top: 50%; height: 1px; transform: translateY(-0.5px); }
+.reticle .v { top: 0; bottom: 0; left: 50%; width: 1px; transform: translateX(-0.5px); }
+.reticle .h::before, .reticle .v::before {
+  /* gap in the middle so the crosshair never covers the world */
+  content: ''; position: absolute; background: #030304;
+}
+.reticle .h::before { left: 38%; right: 38%; top: 0; bottom: 0; }
+.reticle .v::before { top: 38%; bottom: 38%; left: 0; right: 0; }
+.reticle .magring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.reticle .magring circle {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.9;
+  transition: stroke-dashoffset 0.15s linear, stroke 0.3s ease;
+}
+.reticle.near { opacity: 0.7; }
+.reticle.lock { opacity: 1; }
+.reticle.lock .magring circle { stroke: var(--holo); }
+.reticle.lock .h, .reticle.lock .v { background: var(--holo); }
+
+.scope-hint {
+  position: fixed;
+  bottom: 2.8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0.72;
+  width: min(92vw, 1100px);
+  line-height: 1.6;
+}
+
+.scope-readout {
+  position: fixed;
+  font-family: var(--font-mono);
+  font-size: calc(13px * var(--ts));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  line-height: 1.85;
+}
+.scope-readout b { color: var(--ink); font-weight: 400; }
+.scope-readout .gap { margin-top: 14px; }
+.ro-left { left: 28px; top: 22px; }
+.ro-right { right: 28px; top: 22px; text-align: right; }
+
+/* smart-glasses marks: a box around a world in the eyepiece */
+.mark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  /* four corner stubs, no full outline */
+  background:
+    linear-gradient(#fff, #fff) left top / 10px 1.5px no-repeat,
+    linear-gradient(#fff, #fff) left top / 1.5px 10px no-repeat,
+    linear-gradient(#fff, #fff) right top / 10px 1.5px no-repeat,
+    linear-gradient(#fff, #fff) right top / 1.5px 10px no-repeat,
+    linear-gradient(#fff, #fff) left bottom / 10px 1.5px no-repeat,
+    linear-gradient(#fff, #fff) left bottom / 1.5px 10px no-repeat,
+    linear-gradient(#fff, #fff) right bottom / 10px 1.5px no-repeat,
+    linear-gradient(#fff, #fff) right bottom / 1.5px 10px no-repeat;
+  opacity: 0.85;
+}
+.mark.mars { filter: drop-shadow(0 0 4px rgba(255, 140, 90, 0.6)); }
+.mark-label {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  color: #fff;
+  font-size: calc(clamp(11px, 1.05vw, 13px) * var(--ts));
+  letter-spacing: 0.26em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* an arrow on the telescope body pointing toward a world outside the eyepiece */
+.edge {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+  font-size: calc(clamp(12px, 1.2vw, 15px) * var(--ts));
+  letter-spacing: 0.28em;
+}
+.edge-arrow { display: inline-block; font-size: 1.5em; line-height: 1; letter-spacing: 0; }
+.edge.mars .edge-arrow { color: #c2552f; }
+
+.fade-white {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+  z-index: 30;
+}
+.fade-white.on { opacity: 1; }
+
+/* ---------- surface HUD ---------- */
+
+.hud { position: fixed; inset: 0; pointer-events: none; z-index: 12; }
+
+/* invisible layer under the HUD: tap to continue dialogue, or to close an open panel */
+.advance { position: fixed; inset: 0; z-index: 11; cursor: pointer; }
+
+.hud-brand { position: fixed; top: 22px; left: 28px; }
+.hud-brand .t {
+  font-size: calc(21px * var(--ts));
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+}
+.hud-brand .s {
+  font-family: var(--font-mono);
+  font-size: calc(12.5px * var(--ts));
+  margin-top: 4px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--holo);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hud-keys {
+  position: fixed;
+  top: 146px;
+  right: 56px;
+  font-family: var(--font-mono);
+  font-size: calc(13px * var(--ts));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+  text-align: right;
+}
+.hud-keys b { color: #fff; font-weight: 500; }
+
+/* glass cards */
+.card {
+  background: var(--glass);
+  border: 1px solid var(--hair);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px var(--shadow);
+  color: var(--ink);
+}
+
+.dialogue {
+  position: fixed;
+  left: 50px;
+  bottom: 50px;
+  width: min(520px, calc(100vw - 52px));
+  padding: 22px 24px 16px;
+  pointer-events: none;
+  /* floating glass, angled in toward you from the left like a pane in AR glasses */
+  transform-origin: left center;
+  transform: perspective(1100px) rotateY(11deg);
+  translate: calc(var(--px, 0) * -12px) calc(var(--py, 0) * -8px);
+}
+.dialogue .who { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.dialogue .who .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--holo); box-shadow: 0 0 10px var(--holo); }
+.dialogue .who b {
+  font-family: var(--font-mono);
+  font-size: calc(12.5px * var(--ts));
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--holo-deep);
+  font-weight: 500;
+}
+.dialogue p { margin: 0; font-size: calc(22px * var(--ts)); line-height: 1.45; font-weight: 400; min-height: 64px; }
+.dialogue .next {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: calc(12px * var(--ts));
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  text-align: right;
+}
+
+/* ask panel: a list, not buttons */
+.ask {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: min(380px, calc(100vw - 52px));
+  padding: 20px 22px;
+  pointer-events: auto;
+  transform-origin: right center;
+  transform: perspective(1100px) rotateY(-11deg);
+  translate: calc(var(--px, 0) * -12px) calc(var(--py, 0) * -8px);
+}
+.ask h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: calc(12.5px * var(--ts));
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 500;
+}
+.ask .qlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.q {
+  font-size: calc(18px * var(--ts));
+  padding: 11px 0 11px 18px;
+  border-top: 1px solid var(--hair);
+  position: relative;
+  cursor: pointer;
+  transition: padding-left 0.15s ease, color 0.15s ease;
+}
+.q::before { content: '›'; position: absolute; left: 2px; color: var(--mute); transition: color 0.15s ease; }
+.q:hover, .q:focus-visible { padding-left: 24px; color: var(--holo-deep); outline: none; }
+.q:hover::before, .q:focus-visible::before { color: var(--holo-deep); }
+
+/* answer / event panel */
+.answer {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: min(480px, calc(100vw - 52px));
+  padding: 22px 24px;
+  pointer-events: auto;
+  z-index: 13;
+  transform-origin: right center;
+  transform: perspective(1100px) rotateY(-11deg);
+  translate: calc(var(--px, 0) * -12px) calc(var(--py, 0) * -8px);
+}
+.answer h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: calc(12.5px * var(--ts));
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--holo-deep);
+  font-weight: 500;
+}
+.answer p { margin: 0 0 10px; font-size: calc(18.5px * var(--ts)); line-height: 1.5; }
+.answer p.src { font-size: calc(12px * var(--ts)); line-height: 1.6; letter-spacing: 0.12em; }
+.src {
+  font-family: var(--font-mono);
+  font-size: calc(12px * var(--ts));
+  color: var(--mute);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.answer .close-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; gap: 12px; }
+
+.thermo-row { display: flex; justify-content: space-between; align-items: baseline; margin: 12px 0 6px; }
+.thermo-row .pick { font-family: var(--font-mono); font-size: calc(12.5px * var(--ts)); letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; padding: 4px 0; border-bottom: 1px solid transparent; }
+.thermo-row .pick.on { color: var(--ink); border-bottom-color: var(--ink); }
+.thermo-row .pick.dim { color: var(--mute); }
+.thermo-row b { font-size: calc(30px * var(--ts)); font-weight: 600; color: var(--ink); }
+.tbar {
+  height: 4px;
+  background: linear-gradient(90deg, #3b5e8c, #d9d9d9, #e0603a);
+  border-radius: 999px;
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.tbar .now {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 3px solid var(--paper);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  transform: translate(-50%, -50%);
+  transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* quake */
+.quake-wave {
+  width: 100%;
+  height: 88px;
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  display: block;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.quake-controls { display: flex; align-items: center; gap: 10px; }
+.quake-controls input[type='range'] { flex: 1; accent-color: var(--ink); }
+.quake-controls .mono { flex: none; }
+
+/* dust grains */
+.grains { width: 100%; height: 140px; display: block; margin: 8px 0; border: 1px solid var(--hair); border-radius: 8px; background: #0d0d0f; }
+
+/* credits drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(440px, 94vw);
+  background: var(--paper);
+  color: var(--ink);
+  z-index: 40;
+  transform: translateX(105%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 30px 32px;
+  overflow: auto;
+  box-shadow: -20px 0 60px var(--shadow);
+  border-left: 1px solid var(--hair);
+  pointer-events: auto;
+}
+.drawer.open { transform: translateX(0); }
+.drawer h2 { font-size: calc(30px * var(--ts)); font-weight: 500; letter-spacing: -0.01em; margin: 0 0 2px; }
+.drawer h3 {
+  font-family: var(--font-mono);
+  font-size: calc(12.5px * var(--ts));
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 24px 0 8px;
+  font-weight: 500;
+}
+.drawer p, .drawer li { font-size: calc(16px * var(--ts)); line-height: 1.6; }
+.drawer ul { margin: 6px 0; padding-left: 18px; }
+.drawer .fine, .fine { font-family: var(--font-mono); font-size: calc(12.5px * var(--ts)); color: var(--mute); line-height: 1.7; }
+
+/* object marks on the surface: the same corner brackets the telescope uses; the whole box is tappable */
+.obj-mark {
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+  --c: rgba(255, 255, 255, 0.9);
+  background:
+    linear-gradient(var(--c), var(--c)) left top / 22px 3px no-repeat,
+    linear-gradient(var(--c), var(--c)) left top / 3px 22px no-repeat,
+    linear-gradient(var(--c), var(--c)) right top / 22px 3px no-repeat,
+    linear-gradient(var(--c), var(--c)) right top / 3px 22px no-repeat,
+    linear-gradient(var(--c), var(--c)) left bottom / 22px 3px no-repeat,
+    linear-gradient(var(--c), var(--c)) left bottom / 3px 22px no-repeat,
+    linear-gradient(var(--c), var(--c)) right bottom / 22px 3px no-repeat,
+    linear-gradient(var(--c), var(--c)) right bottom / 3px 22px no-repeat;
+  transition: transform 0.2s ease;
+}
+.obj-mark:hover, .obj-mark:focus-visible { --c: var(--holo); transform: scale(1.04); outline: none; }
+.obj-mark-label {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 16px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: calc(30px * var(--ts));
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+.obj-mark:hover .obj-mark-label { color: var(--holo); }
+
+/* legacy round hotspot (unused) */
+.hotspot {
+  pointer-events: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  background: rgba(10, 10, 10, 0.55);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: calc(16px * var(--ts));
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 0 5px rgba(250, 250, 250, 0.12), 0 0 24px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.hotspot:hover {
+  background: var(--holo);
+  border-color: var(--holo);
+  color: #062a30;
+  box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.2), 0 0 34px rgba(34, 211, 238, 0.6);
+}
+
+.scene-label {
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: calc(12.5px * var(--ts));
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .canvas-holder.framed, .frame-marks { inset: 92px 10px 10px 10px; border-radius: 18px; }
+  .settings.telescope { top: auto; bottom: 64px; right: 50%; transform: translateX(50%); }
+  .settings.surface { top: auto; bottom: 20px; right: 50%; transform: translateX(50%); z-index: 9; }
+  .dialogue, .ask, .answer { transform: none; }
+  .compass { top: 100px; width: 70vw; margin-left: -35vw; }
+  .page-title { width: 92vw; }
+  .dialogue { width: calc(100vw - 40px); left: 20px; bottom: 20px; padding: 16px 16px 12px; }
+  .dialogue p { font-size: calc(18px * var(--ts)); min-height: 54px; }
+  .ask { width: calc(100vw - 40px); right: 20px; bottom: 20px; }
+  .answer { width: calc(100vw - 40px); right: 20px; bottom: 20px; z-index: 14; }
+  .scope-readout { display: none; }
+  .scope-hint { letter-spacing: 0.2em; }
+  .hud-brand .s { display: none; }
+  .hud-brand .t { font-size: calc(16px * var(--ts)); }
+  .hud-keys { display: none; }
+}
+
+@media (max-width: 1180px) and (min-width: 721px) {
+  .scope-readout { font-size: calc(11.5px * var(--ts)); letter-spacing: 0.1em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-title, .scope-readout, .scope-hint, .hud-keys, .compass, .frame-marks, .settings, .dialogue, .ask, .answer { translate: none; }
+  .fade-white, .tbar .now, .reticle, .q { transition: none; }
+}
+
+/* ---------- the flight onto real terrain (orbit phase) ---------- */
+.orbit-ui { position: fixed; inset: 0; pointer-events: none; z-index: 12; color: #fff; font-family: var(--font-mono); text-transform: uppercase; }
+.site-pin { position: fixed; left: 0; top: 0; }
+.site-ring {
+  position: absolute; left: -16px; top: -16px; width: 32px; height: 32px; border-radius: 50%;
+  border: 1.5px solid var(--holo); box-shadow: 0 0 16px rgba(34, 211, 238, 0.6), inset 0 0 10px rgba(34, 211, 238, 0.35);
+  animation: sitepulse 1.8s ease-in-out infinite;
+}
+@keyframes sitepulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.6; } }
+.site-text { position: absolute; left: 28px; top: -12px; display: flex; flex-direction: column; gap: 3px; white-space: nowrap; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.95); }
+.site-text b { font-weight: 500; font-size: calc(15px * var(--ts)); letter-spacing: 0.26em; color: #fff; }
+.site-text em { font-style: normal; font-size: calc(12px * var(--ts)); letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.82); }
+.orbit-readout {
+  position: fixed; left: 56px; top: 146px; font-size: calc(13px * var(--ts)); letter-spacing: 0.16em; line-height: 1.9;
+  color: rgba(255, 255, 255, 0.7); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+  translate: calc(var(--px, 0) * -5px) calc(var(--py, 0) * -4px);
+}
+.orbit-readout b { color: #fff; font-weight: 400; }
+.orbit-bar { width: 180px; height: 2px; margin-top: 8px; background: rgba(255, 255, 255, 0.25); }
+.orbit-bar > div { height: 100%; background: var(--holo); transform-origin: left center; transform: scaleX(0); }
+.orbit-credit {
+  position: fixed; right: 56px; bottom: 46px; max-width: 46vw; text-align: right;
+  font-size: calc(12px * var(--ts)); letter-spacing: 0.12em; line-height: 1.6; color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+.orbit-credit b { color: #fff; font-weight: 400; }
+.orbit-hint {
+  position: fixed; left: 50%; bottom: 46px; transform: translateX(-50%); width: min(60vw, 900px); text-align: center;
+  font-size: calc(clamp(13px, 1.3vw, 16px) * var(--ts)); letter-spacing: 0.3em; line-height: 1.6; color: #fff;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.95);
+  translate: calc(var(--px, 0) * -7px) calc(var(--py, 0) * -4px);
+}
+@media (max-width: 720px) {
+  .orbit-readout { left: 26px; top: 108px; }
+  .orbit-credit { left: 20px; right: 20px; bottom: 70px; max-width: none; text-align: center; }
+  .orbit-hint { width: 90vw; bottom: 22px; letter-spacing: 0.16em; }
+}
+
+/* moonquake speed words */
+.quake-controls .speed {
+  font-family: var(--font-mono);
+  font-size: calc(13px * var(--ts));
+  letter-spacing: 0.08em;
+  min-width: 52px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  color: var(--mute);
+  cursor: pointer;
+}
+.quake-controls .speed:hover { color: var(--ink); }
+.quake-controls .speed.on { color: var(--ink); background: color-mix(in srgb, var(--ink) 9%, transparent); }
+.quake-controls .speed:focus-visible { outline: 2px solid var(--holo); outline-offset: 2px; }
+.quake-wave { height: 110px; }
+
+/* the terrain credit sits top-right in the flight, clear of the hint */
+.orbit-credit { top: 146px; bottom: auto; }
+.src-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.src-link:hover { color: var(--holo-deep); }
+
+/* click a world to fly there: the marks and edge arrows take clicks; crosshair instead of a grab hand */
+.canvas-holder.telescope canvas { cursor: crosshair; }
+.canvas-holder.telescope canvas:active { cursor: move; }
+.mark, .mark-label, .edge { pointer-events: auto; cursor: pointer; }
+.mark { padding: 0; }
+.mark:hover, .edge:hover .edge-label, .mark-label:hover { filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.9)); }
+.edge { padding: 8px 10px; }
+
+/* ---------- landing cleanup (Natalie, Nov 14 evening) ---------- */
+/* the name: smaller, no slashes */
+.page-title h1 { font-size: calc(clamp(28px, 3.4vw, 46px) * var(--ts)); letter-spacing: 0.02em; margin-bottom: 10px; }
+.page-title.surface h1 { font-size: calc(clamp(22px, 2.6vw, 34px) * var(--ts)); }
+/* settings live in the top-right corner on every page */
+.settings.telescope, .settings.surface { top: 22px; right: 26px; bottom: auto; transform: none; }
+.theme-toggle {
+  cursor: pointer; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-size: 21px; color: var(--ink); line-height: 1;
+}
+.theme-toggle:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.theme-toggle:focus-visible { outline: 2px solid var(--holo); outline-offset: 2px; }
+/* the eyepiece moved up: keep the reticle on its centre */
+.reticle { top: 52.5%; }
+/* the line under the telescope matches "Abandoned, but not forgotten" exactly */
+.scope-hint {
+  font-family: var(--font-mono); font-weight: 400; font-size: calc(clamp(13px, 1.45vw, 17px) * var(--ts));
+  letter-spacing: 0.34em; text-transform: uppercase; color: var(--ink); opacity: 0.72; bottom: 4.5vh;
+}
+/* one quiet credit line, bottom-left */
+.scope-data {
+  position: fixed; left: 26px; bottom: 18px; font-family: var(--font-mono); font-size: calc(11px * var(--ts));
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); opacity: 0.8;
+}
+@media (max-width: 720px) { .scope-data { display: none; } }
+.theme-toggle + .set-group { padding-left: 16px; border-left: 1px solid var(--hair); }
+
+/* Manny's caption on the landing page: a glass pane beside him, angled in like the surface panels */
+.manny-caption {
+  position: fixed; left: max(24px, calc(50% - 26.5vh * 1.16 - 60px - 26.5vh * 1.55 * 0.18 - min(30vw, 360px))); top: 22vh;
+  width: min(30vw, 340px); padding: 16px 18px 14px; pointer-events: none;
+  background: var(--glass); border: 1px solid var(--hair); border-radius: 18px; backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px var(--shadow); color: var(--ink);
+  transform-origin: left center; transform: perspective(1100px) rotateY(10deg);
+  translate: calc(var(--px, 0) * -10px) calc(var(--py, 0) * -6px);
+}
+.manny-caption .who { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.manny-caption .who .dot { width: 7px; height: 7px; border-radius: 50%; background: #e0a43a; box-shadow: 0 0 8px #e0a43a; }
+.manny-caption .who b { font-family: var(--font-mono); font-weight: 500; font-size: calc(12px * var(--ts)); letter-spacing: 0.3em; color: var(--mute); }
+.manny-caption p { margin: 0; font-size: calc(18px * var(--ts)); line-height: 1.45; min-height: 52px; }
+.manny-caption .review-tag {
+  margin-top: 10px; font-family: var(--font-mono); font-size: calc(11px * var(--ts)); letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mute); border-top: 1px solid var(--hair); padding-top: 8px;
+}
+@media (max-width: 900px) { .manny-caption { left: 16px; right: 16px; width: auto; top: auto; bottom: 90px; transform: none; } }
+@media (min-width: 901px) { .manny-caption { top: 13vh; } }
+/* object labels: smaller now that the camera walks with Manny */
+.obj-mark-label { font-size: calc(22px * var(--ts)); letter-spacing: 0.18em; }
+.obj-mark-label { font-size: calc(18px * var(--ts)); letter-spacing: 0.16em; }
+
+/* the Ask card never grows past the window; long answers scroll inside it */
+.ask { max-height: calc(100vh - 220px); overflow-y: auto; }

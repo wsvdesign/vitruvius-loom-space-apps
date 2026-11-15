@@ -1,0 +1,63 @@
+{
+  "version": "fixture-1",
+  "generated": "2026-11-14T00:00:00Z",
+  "facts": [
+    {
+      "id": "fx-moon-dust",
+      "topic": "Moon dust",
+      "world": "moon",
+      "claim": "Fixture claim: moon dust grains are jagged because there is no wind to smooth them.",
+      "detail": "Fixture detail about dust sticking to suits.",
+      "source_title": "Fixture Source Dust",
+      "source_url": "https://example.test/dust",
+      "label": "FIXTURE"
+    },
+    {
+      "id": "fx-moon-temp",
+      "topic": "Moon temperature",
+      "world": "moon",
+      "claim": "Fixture claim: the sunlit surface reaches 250 degrees and the shadow drops to -208 degrees.",
+      "source_title": "Fixture Source Temperature",
+      "source_url": "https://example.test/temp",
+      "label": "FIXTURE"
+    },
+    {
+      "id": "fx-mars-dust",
+      "topic": "Mars dust storms",
+      "world": "mars",
+      "claim": "Fixture claim: dust storms on Mars can cover the whole planet.",
+      "source_title": "Fixture Source Mars Dust",
+      "source_url": "https://example.test/mars-dust",
+      "label": "FIXTURE"
+    },
+    {
+      "id": "fx-mars-heli",
+      "topic": "Ingenuity helicopter",
+      "world": "mars",
+      "claim": "Fixture claim: the helicopter flew 72 times in the thin air.",
+      "source_title": "Fixture Source Helicopter",
+      "source_url": "https://example.test/heli",
+      "label": "FIXTURE"
+    },
+    {
+      "id": "fx-moon-quake",
+      "topic": "Moonquakes",
+      "world": "moon",
+      "claim": "Fixture claim: seismometers left by astronauts recorded moonquakes for years.",
+      "source_title": "Fixture Source Quakes",
+      "source_url": "https://example.test/quake",
+      "label": "FIXTURE"
+    },
+    {
+      "id": "fx-both-gravity",
+      "topic": "Gravity",
+      "world": "both",
+      "claim": "Fixture claim: gravity is weaker on small worlds.",
+      "source_title": "Fixture Source Gravity",
+      "source_url": "https://example.test/gravity",
+      "label": "FIXTURE"
+    },
+    { "id": "fx-broken-no-claim", "topic": "Broken", "world": "moon", "source_title": "x", "source_url": "https://example.test/x", "label": "FIXTURE" },
+    { "topic": "Broken no id", "world": "moon", "claim": "Fixture claim with no id.", "source_title": "x", "source_url": "https://example.test/y", "label": "FIXTURE" }
+  ]
+}

@@ -1,0 +1,15 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# dependencies and build
+node_modules/
+dist/
+
+# os / editor
+.DS_Store
+.vscode/
+
+# Meshy outputs kept locally but not shipped (only the walking model is used)
+models-archive/

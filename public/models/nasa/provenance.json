@@ -1,0 +1,92 @@
+{
+  "version": "1",
+  "checked": "2026-11-14",
+  "status": "Models located and their glTF JSON inspected on 2026-11-14. The .glb files are NOT yet in this folder: the environment that prepared this file could not write binary files. Run the commands in 'download_commands' from the repo root to fetch them unchanged, then set 'downloaded' to true and fill in 'retrieved'.",
+  "download_commands": [
+    "curl -L --fail -o \"public/models/nasa/ingenuity-mars-helicopter.glb\" \"https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/ingenuity-mars-helicopter/Ingenuity%20Mars%20Helicopter.glb\"",
+    "curl -L --fail -o \"public/models/nasa/apollo-lunar-module.glb\" \"https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/apollo-lunar-module/Apollo%20Lunar%20Module.glb\""
+  ],
+  "usage_terms": {
+    "hub_statement": "All of these assets are free to download and use. Refer to the NASA Images and Media Usage Guidelines.",
+    "hub_url": "https://science.nasa.gov/3d-resources/",
+    "guidelines_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "rules": "Acknowledge NASA as the source; do not use the NASA insignia, logotype or seal; do not imply NASA endorsement. No model-specific license is shown on either model page."
+  },
+  "models": [
+    {
+      "id": "ingenuity",
+      "title": "Ingenuity Mars Helicopter",
+      "local_file": "public/models/nasa/ingenuity-mars-helicopter.glb",
+      "original_filename": "Ingenuity Mars Helicopter.glb",
+      "downloaded": false,
+      "retrieved": null,
+      "source_page": "https://science.nasa.gov/3d-resources/ingenuity-mars-helicopter/",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/ingenuity-mars-helicopter/Ingenuity%20Mars%20Helicopter.glb",
+      "mirror_url": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Ingenuity%20Mars%20Helicopter/Ingenuity%20Mars%20Helicopter.glb",
+      "format": "GLB (glTF 2.0)",
+      "size_bytes": 2019408,
+      "size_listed": "1.93 MB, dated Apr 3, 2025 (source page updated Jun 16, 2025)",
+      "credit": "NASA/Brian E. Kumanchik",
+      "gltf": {
+        "generator": "Khronos glTF Blender I/O v4.2.57",
+        "extensions_required": ["KHR_draco_mesh_compression"],
+        "extensions_used": ["KHR_draco_mesh_compression", "EXT_texture_webp (JPEG/PNG fallbacks present)"],
+        "animations": false,
+        "root_node": "bus (scale 0.1295, rotated 90 degrees about Z)",
+        "nodes": ["bus", "cams", "leg_01", "leg_02", "leg_03", "leg_04", "parts_01", "parts_02", "rotors_01", "rotors_02", "solar_panel"],
+        "moving_part_nodes": ["rotors_01", "rotors_02", "leg_01", "leg_02", "leg_03", "leg_04"],
+        "materials": ["carbon fiber", "binoculars", "gunmetal", "gunmetal_dark", "aluminum", "grey_brushed", "blades", "chopper_sp", "gold", "foil_silver"],
+        "up_axis": "+Y (glTF convention; the child stack runs along the bus's local +X, and the bus's 90-degree Z rotation maps that to +Y)",
+        "units_estimate": "Probably metres: child scales (7.7213) times root scale (0.1295) is about 1.0, and solar_panel sits about 0.48 units above the bus origin. Measure a Box3 on load to confirm.",
+        "mesh_bounds_raw": "Per-primitive POSITION extremes min [-0.2125, -0.6862, -0.7608], max [2.0526, 0.7117, 0.7652] (mesh-local, not composed)"
+      }
+    },
+    {
+      "id": "apollo-lunar-module",
+      "title": "Apollo Lunar Module",
+      "local_file": "public/models/nasa/apollo-lunar-module.glb",
+      "original_filename": "Apollo Lunar Module.glb",
+      "downloaded": false,
+      "retrieved": null,
+      "source_page": "https://science.nasa.gov/3d-resources/apollo-lunar-module/",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/apollo-lunar-module/Apollo%20Lunar%20Module.glb",
+      "mirror_url": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Apollo%20Lunar%20Module/Apollo%20Lunar%20Module.glb",
+      "format": "GLB (glTF 2.0)",
+      "size_bytes": 716840,
+      "size_listed": "700.04 KB, dated Mar 20, 2025 (source page updated Jun 9, 2025)",
+      "credit": "NASA/Michael D. Carbajal",
+      "gltf": {
+        "generator": "Khronos glTF Blender I/O v4.2.57",
+        "extensions_required": ["KHR_draco_mesh_compression"],
+        "extensions_used": ["KHR_draco_mesh_compression", "KHR_materials_specular", "EXT_texture_webp"],
+        "animations": true,
+        "animations_note": "One action per node ('lunarlandeAction' on the root plus '<node>Action' for nearly every node), with LINEAR translation, rotation and scale channels. Nodes store no TRS of their own. Test the model both with and without playing the animations.",
+        "root_node": "lunarlande",
+        "node_count": 135,
+        "node_naming": "Generic Maya-style names (group13 .., group31 .., group51 .., group61 .., group73 .., group74 .., group75 .., pCone6, pCube2, pCylinder1-9, pCylinde10-11, polySurfa1-4, pPipe1-2, pPlane1-2, pSphere20-30). No node is named for the descent stage, ascent stage, legs, hatch or antennas.",
+        "moving_part_nodes": [],
+        "materials": ["blinn1SG.002", "blinn2SG.002", "blinn3SG.001", "blinn4SG.002", "blinn5SG.002", "blinn6SG.001", "blinn7SG.002", "blinn8SG.001", "blinn9SG.001", "blinn10SG.001", "blinn12SG.001", "initialShadingGr.001"],
+        "up_axis": "+Y (glTF convention; sampled parts sit at y of about 3.0 to 3.6)",
+        "units_estimate": "Unknown. The sampled accessors span x of about -1.4 to 1.4 and y of about 3.0 to 3.6 (partial). Measure a Box3 on load and scale to the real vehicle.",
+        "full_vehicle_or_stage": "Not stated on the source page. The node names do not separate descent and ascent stages."
+      }
+    }
+  ],
+  "listed_not_glb": [
+    {
+      "title": "Apollo 11 - Landing Site (terrain height map, 30 x 30 km, vertical exaggeration 60x)",
+      "source_page": "https://science.nasa.gov/3d-resources/apollo-11-landing-site/",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/printable/apollo-11---landing-site/Apollo%2011%20-%20Landing%20Site.stl",
+      "format": "STL",
+      "size_listed": "6.81 MB, dated Apr 21, 2025",
+      "credit": "none shown on page; use 'NASA'",
+      "downloaded": false
+    }
+  ],
+  "not_found_on_nasa_3d_resources": [
+    "Apollo Laser Ranging Retroreflector",
+    "Apollo Passive Seismic Experiment / EASEP / ALSEP",
+    "Apollo Lunar Roving Vehicle"
+  ],
+  "not_found_note": "Checked against the full nasa/NASA-3D-Resources '3D Models' directory listing (GitHub API) and page 1 of 25 of the science.nasa.gov/3d-resources hub on 2026-11-14."
+}

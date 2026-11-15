@@ -1,0 +1,8 @@
+{
+  "beats": ["Fixture beat."],
+  "answers": {
+    "gold": { "title": "Fixture gold", "body": "Fixture body about shiny insulation.", "src": "FIXTURE · insulation source" },
+    "water": { "title": "Fixture water", "body": "Fixture body about ice in dark craters.", "src": "FIXTURE · ice source" },
+    "bad": { "title": "No body" }
+  }
+}

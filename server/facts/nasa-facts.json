@@ -1,0 +1,708 @@
+{
+  "version": "1",
+  "generated": "2026-11-14",
+  "facts": [
+    {
+      "id": "moon-temp-equator-day",
+      "topic": "temperature",
+      "world": "moon",
+      "claim": "Near the Moon's equator, the ground can heat up to over 250°F (121°C) in daylight.",
+      "detail": "Daytime value near the equator. Do not describe it as a reading 'a few steps' from a shadow.",
+      "source_title": "Weather on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/weather-on-the-moon/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-temp-equator-night",
+      "topic": "temperature",
+      "world": "moon",
+      "claim": "After nightfall near the Moon's equator, the temperature can plummet to -208°F (-133°C).",
+      "detail": "This is a night value, not a shadow-next-to-sunlight value.",
+      "source_title": "Weather on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/weather-on-the-moon/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-temp-polar-craters",
+      "topic": "temperature",
+      "world": "moon",
+      "claim": "In deep craters near the Moon's poles, permanent shadows keep the ground even colder. NASA's Lunar Reconnaissance Orbiter has measured temperatures lower than -410°F (-246°C).",
+      "detail": "The same page gives the Moon's overall surface range as higher than 250°F to lower than -410°F.",
+      "source_title": "Weather on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/weather-on-the-moon/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-temp-why-extreme",
+      "topic": "temperature",
+      "world": "moon",
+      "claim": "The Moon has hardly any atmosphere, so its temperatures change quickly and dramatically. Its thin gas layer is too skimpy to trap or spread the Sun's energy, so sunlit and shadowed places are extremely different.",
+      "detail": "NASA calls the Moon's barely-there gas layer an exosphere.",
+      "source_title": "Weather on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/weather-on-the-moon/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-no-weather",
+      "topic": "general",
+      "world": "moon",
+      "claim": "The Moon's exosphere is much too thin to make weather like we have on Earth, so there is no wind to blow dust around.",
+      "detail": "Source sentence: 'The Moon's exosphere is much too thin to produce weather as we know it on Earth.' 'No wind' is the direct consequence stated for kids.",
+      "source_title": "Weather on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/weather-on-the-moon/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-distance",
+      "topic": "general",
+      "world": "moon",
+      "claim": "The Moon is an average of 238,855 miles (384,400 kilometers) away from Earth.",
+      "source_title": "Moon Facts (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-gravity",
+      "topic": "general",
+      "world": "moon",
+      "claim": "Gravity on the surface of the Moon is one-sixth of Earth's.",
+      "source_title": "Moon Facts (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-size",
+      "topic": "general",
+      "world": "moon",
+      "claim": "The Moon has a radius of about 1,080 miles (1,740 kilometers), so it is less than a third of the width of Earth.",
+      "source_title": "Moon Facts (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-spin",
+      "topic": "general",
+      "world": "moon",
+      "claim": "The Moon goes all the way around Earth in about 27 Earth days, and it spins at that same rate.",
+      "detail": "From Earth, the Moon appears to go around every 29 days (the page explains this difference). The page does not state a 'lunar day' length.",
+      "source_title": "Moon Facts (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-tonight-2026-11-14",
+      "topic": "general",
+      "world": "moon",
+      "claim": "On the evening of Saturday, November 14, 2026 (7 to 9 PM Eastern), the Moon is a waxing crescent about 27 to 28 percent lit. It is about 404,800 kilometers (about 251,500 miles) from the center of the Earth, farther than its average distance.",
+      "detail": "From NASA JPL Horizons via the app's public/data/ephemeris.json (observer: Earth's centre, 500@399; retrieved 2026-11-14T19:28:46Z). Rows unix 1794700800 to 1794708000: illuminated 27.23% to 27.93% (rising, so waxing), range 0.002705821 AU (converted with 1 AU = 149,597,870.7 km). Earlier in the afternoon it is about 25 to 26 percent. Valid only for this date.",
+      "source_title": "NASA JPL Horizons System (Moon, target 301)",
+      "source_url": "https://ssd.jpl.nasa.gov/horizons/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-regolith",
+      "topic": "dust",
+      "world": "moon",
+      "claim": "Nearly the entire Moon is covered by a rubble pile of charcoal-gray, powdery dust and rocky debris.",
+      "source_title": "Moon Facts (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-dust-coats-suits",
+      "topic": "dust",
+      "world": "moon",
+      "claim": "Apollo astronauts found that lunar dust quickly coated their spacesuits and was difficult to remove. It was also quite abrasive, wearing on their suit fabrics, seals, and faceplates.",
+      "source_title": "10 Things: Dust in the Wind (on Mars and Well Beyond) (NASA Science, Jul 26, 2022; updated Nov 5, 2024)",
+      "source_url": "https://science.nasa.gov/solar-system/10-things-dust-in-the-wind-on-mars-and-well-beyond/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-dust-smell",
+      "topic": "dust",
+      "world": "moon",
+      "claim": "Apollo astronauts said Moon dust had a distinctive, pungent smell, not unlike gunpowder. It also irritated their eyes and lungs.",
+      "detail": "Say 'not unlike gunpowder' or 'a bit like gunpowder'. The source does not say 'spent gunpowder'.",
+      "source_title": "10 Things: Dust in the Wind (on Mars and Well Beyond) (NASA Science, Jul 26, 2022; updated Nov 5, 2024)",
+      "source_url": "https://science.nasa.gov/solar-system/10-things-dust-in-the-wind-on-mars-and-well-beyond/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-dust-jagged",
+      "topic": "dust",
+      "world": "moon",
+      "claim": "Moon dust grains are rough and jagged, because the kind of weathering that smooths grains on Earth doesn't happen much on the Moon. That roughness makes them cling to surfaces and scratch them.",
+      "detail": "The source does not compare the dust to broken glass; treat 'sharp as broken glass' as a figure of speech, not a NASA fact.",
+      "source_title": "10 Things: Dust in the Wind (on Mars and Well Beyond) (NASA Science, Jul 26, 2022; updated Nov 5, 2024)",
+      "source_url": "https://science.nasa.gov/solar-system/10-things-dust-in-the-wind-on-mars-and-well-beyond/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-dust-plume-speed",
+      "topic": "dust",
+      "world": "moon",
+      "claim": "When a lander fires its rocket near the ground, the exhaust can throw fine Moon dust at more than 2 kilometers per second (over 4,400 miles per hour). Some of that dust may stay in orbit around the Moon for a long time.",
+      "detail": "Source abstract: plumes are 'known to accelerate fine dust to speeds exceeding 2 km/s' and ejecta 'may remain in lunar orbit for extended periods of time.' The mph figure is a unit conversion (2 km/s is about 4,474 mph), not from the source. This is a modeling paper by NASA Kennedy researchers (AAS 20-511, 2020).",
+      "source_title": "The Behavior of High-Velocity Dust Generated by Lander Plumes in the Lunar Environment (NASA NTRS 20205003590, 2020)",
+      "source_url": "https://ntrs.nasa.gov/citations/20205003590",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-dust-ejecta-damage",
+      "topic": "dust",
+      "world": "moon",
+      "claim": "A lander's rocket exhaust kicks up abrasive dust and larger particles moving at high speeds, and NASA says this can damage the lander and structures around it.",
+      "source_title": "NASA Supports Tests of Dust Sensor to Aid Lunar Landings (NASA, Oct 27, 2023)",
+      "source_url": "https://www.nasa.gov/directorates/stmd/nasa-supports-tests-of-dust-sensor-to-aid-lunar-landings/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-dust-surveyor3-test",
+      "topic": "lander",
+      "world": "moon",
+      "claim": "Apollo 12 landed near the robot lander Surveyor 3, and the Surveyor parts the astronauts brought home are still the main real-world test of how rocket exhaust blasts Moon dust. Studying them, NASA scientists found the exhaust tended to remove more dust than it had deposited.",
+      "detail": "Source (abstract): Metzger, Hintze, Trigwell, Lane, 'Further Analysis on the Mystery of the Surveyor III Dust Deposits', KSC, Earth and Space 2012. The abstract says no definitive answer is possible on where the deposited dust came from. Sandblasting/pitting of Surveyor 3 was NOT confirmed from a source read this session.",
+      "source_title": "Further Analysis on the Mystery of the Surveyor III Dust Deposits (NASA NTRS 20120000029)",
+      "source_url": "https://ntrs.nasa.gov/citations/20120000029",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-water-psr-ice",
+      "topic": "water",
+      "world": "moon",
+      "claim": "Water exists on the Moon as ice inside permanently shadowed regions: places near the poles that never receive light from the Sun.",
+      "detail": "Keep this separate from water molecules in sunlit soil (see moon-water-sunlit). Do not place ice at the Apollo 11 site.",
+      "source_title": "Water & Ices on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/moon-water-and-ices/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-water-m3-2018",
+      "topic": "water",
+      "world": "moon",
+      "claim": "In 2018, scientists using NASA's Moon Mineralogy Mapper instrument found definitive evidence of water ice on the Moon's surface, in the darkest and coldest parts of its polar regions. Most of it lies in crater shadows where the warmest temperatures never rise above minus 250°F.",
+      "detail": "JPL news release Aug 20, 2018. At the south pole most ice is concentrated at craters; the north pole's ice is more widely but sparsely spread.",
+      "source_title": "Ice Confirmed at the Moon's Poles (NASA JPL, Aug 20, 2018)",
+      "source_url": "https://www.jpl.nasa.gov/news/ice-confirmed-at-the-moons-poles/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-water-lcross",
+      "topic": "water",
+      "world": "moon",
+      "claim": "On October 9, 2009, NASA's LCROSS mission crashed into Cabeus Crater, a permanently shadowed region near the Moon's south pole. Instruments watching the splash saw grains of water ice in the material thrown up.",
+      "detail": "Date and crater from the NASA Science LCROSS impact-site image page; 'grains of water ice in the ejected material' from the Water & Ices page.",
+      "source_title": "Water & Ices on the Moon (NASA Science); LCROSS impact site (NASA Science image page)",
+      "source_url": "https://science.nasa.gov/moon/moon-water-and-ices/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-water-sunlit",
+      "topic": "water",
+      "world": "moon",
+      "claim": "In 2020, NASA announced it had found water on the sunlit surface of the Moon too, but only a little: roughly a 12-ounce bottle of water spread through a cubic meter of soil.",
+      "detail": "NASA describes this water as molecules of H2O embedded within, or perhaps sticking to, grains of lunar dust. It is not ice and not a drinkable pool.",
+      "source_title": "Water & Ices on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/moon-water-and-ices/",
+      "label": "Verified"
+    },
+    {
+      "id": "moon-water-lro",
+      "topic": "water",
+      "world": "moon",
+      "claim": "NASA's Lunar Reconnaissance Orbiter is still orbiting the Moon, sending data that scientists use to map lunar resources, including hydrogen.",
+      "source_title": "Water & Ices on the Moon (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/moon-water-and-ices/",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-launch",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "Apollo 11 launched on July 16, 1969, at 9:32 a.m. EDT (13:32 UT).",
+      "source_title": "Apollo 11 Lunar Landing Mission (NASA NSSDCA)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo11info.html",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-landing",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "Apollo 11's lunar module Eagle landed on the Moon on July 20, 1969, at 4:17:40 p.m. EDT (20:17:40 UT), in the Sea of Tranquility (Mare Tranquillitatis).",
+      "source_title": "Apollo 11 Lunar Landing Mission (NASA NSSDCA)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo11info.html",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-coordinates",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "Eagle landed at 0.67416° north latitude, 23.47314° east longitude on the Moon.",
+      "detail": "The NSSDCA mission summary rounds this to 0.67 N, 23.47 E. The ILRS page puts the Apollo 11 laser reflector at 0.6734 N, 23.473 E. The app uses 0.674 N, 23.473 E, consistent with these.",
+      "source_title": "Apollo 11 Lunar Module / EASEP (NASA NSSDCA 1969-059C)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-tranquility-base",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "After landing, the crew radioed: \"Houston, Tranquility Base here, the Eagle has landed.\"",
+      "source_title": "Apollo 11 mission page (NASA, updated Mar 18, 2026)",
+      "source_url": "https://www.nasa.gov/mission/apollo-11/",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-crew",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "The Apollo 11 crew was Neil A. Armstrong (commander), Michael Collins (command module pilot), and Edwin E. 'Buzz' Aldrin Jr. (lunar module pilot). Armstrong and Aldrin stayed on the Moon for about 22 hours.",
+      "detail": "Crew roles from NSSDCA; '22-hour stay' from nasa.gov Apollo 11 page. Collins stayed in orbit.",
+      "source_title": "Apollo 11 Lunar Landing Mission (NASA NSSDCA); Apollo 11 (NASA)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo11info.html",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-descent-stage-left",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "The bottom half of Eagle, called the descent stage, worked as a launch pad for the top half and was left behind on the Moon. It is still at Tranquility Base.",
+      "detail": "NSSDCA: 'The descent stage served as a platform for launching the ascent stage and was left behind on the Moon.' The ascent stage's fate is not known; NASA assumes it eventually crashed into the Moon.",
+      "source_title": "Apollo 11 Lunar Module / EASEP (NASA NSSDCA 1969-059C)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-experiments",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "Apollo 11's experiments included a Passive Seismic Experiment, a Laser Ranging Retroreflector, Solar Wind Composition, a Lunar Dust Detector, and Soil Mechanics. The seismometer package was set up about 17 meters south of the lander.",
+      "detail": "Experiment list from NSSDCA mission summary; '17 m south of the LM' and 'LRRR about 5 m NNW of the EASEP' from the NSSDCA LM record.",
+      "source_title": "Apollo 11 Lunar Module / EASEP (NASA NSSDCA 1969-059C)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-seismometer-short-life",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "Apollo 11's seismometer at Tranquility Base only worked for a few weeks. It was solar powered, and NASA ended the experiment on August 27, 1969.",
+      "detail": "NSSDCA LM record: transmission was stopped by ground command when power began to drop as predicted, and the experiment was terminated 27 August 1969. The 'four seismometers powered by two panels of solar cells' description comes from the NASA Moonquakes page. Cross-check exact dates against the NSSDCA Passive Seismic Experiment record before quoting dates aloud.",
+      "source_title": "Apollo 11 Lunar Module / EASEP (NASA NSSDCA 1969-059C)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-retroreflector-still-used",
+      "topic": "apollo11",
+      "world": "moon",
+      "claim": "Apollo 11 left a laser mirror panel, 46 by 46 centimeters with 100 reflectors, that needs no power. More than 50 years later it still gives scientists data when they bounce lasers off it from Earth.",
+      "detail": "ILRS (NASA Goddard) page; it lists the array at 0.6734 N, 23.473 E and says Apollo 14 and Apollo 15 also left reflectors. The page's 'last modified' date (2012) is unreliable because it cites later releases.",
+      "source_title": "Apollo 11 retroreflector (ILRS, NASA Goddard)",
+      "source_url": "https://ilrs.gsfc.nasa.gov/missions/satellite_missions/current_missions/ap11_general.html",
+      "label": "Verified"
+    },
+    {
+      "id": "seismic-apollo12-station-years",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "The Apollo 12 science station was turned on November 19, 1969, and listened to the Moon until all the Apollo stations were shut down on September 30, 1977.",
+      "source_title": "Apollo 12 Lunar Module / ALSEP (NASA NSSDCA 1969-099C)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+      "label": "Verified"
+    },
+    {
+      "id": "seismic-deep-moonquakes",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "Deep moonquakes happen hundreds of miles below the surface. They are tidal events, caused by Earth's gravity pulling on the Moon.",
+      "source_title": "Moonquakes (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/moonquakes/",
+      "label": "Verified"
+    },
+    {
+      "id": "seismic-shallow-moonquakes",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "Shallow moonquakes, linked to the Moon slowly shrinking, start 20 to 30 kilometers down. They can reach 5.5 on the Richter scale and last over 10 minutes.",
+      "source_title": "Moonquakes (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/moonquakes/",
+      "label": "Verified"
+    },
+    {
+      "id": "seismic-thermal-impact-moonquakes",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "Some moonquakes are caused by meteoroids hitting the Moon. Others are tiny, very shallow quakes from rock expanding and shrinking as it swings between the freezing lunar night and the hot lunar day.",
+      "source_title": "Moonquakes (NASA Science, updated Feb 12, 2026)",
+      "source_url": "https://science.nasa.gov/moon/moonquakes/",
+      "label": "Verified"
+    },
+    {
+      "id": "seismic-apollo12-lm-impact",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "After Apollo 12, NASA crashed the empty top half of the lander into the Moon on purpose so the seismometer could feel it. Strong signals lasted for more than half an hour, and weaker signals stopped about an hour later.",
+      "detail": "nasa.gov 'Apollo 12: The Pinpoint Mission' (published Jul 8, 2009; updated Sep 29, 2023). It hit about 40 miles (NSSDCA: about 60 km) from the seismic station, at 3.94 S, 338.80 E. The 'rang like a bell' phrasing was not confirmed from a page read this session; avoid it or label it a figure of speech.",
+      "source_title": "Apollo 12: The Pinpoint Mission (NASA)",
+      "source_url": "https://www.nasa.gov/missions/apollo/apollo-12-the-pinpoint-mission/",
+      "label": "Verified"
+    },
+    {
+      "id": "seismic-apollo13-sivb-impact",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "On April 15, 1970, Apollo 13's spent rocket stage (about 13,300 kilograms) was crashed into the Moon at about 2.58 kilometers per second to give the Apollo 12 seismometer a known 'thump' to study.",
+      "detail": "NSSDCA S-IVB record: impacted at 01:09:40 UT on 15 April 1970, providing a seismic source for the Apollo 12 ALSEP seismic station. Mass is from the record's 'Facts in Brief'.",
+      "source_title": "Apollo 13 SIVB (NASA NSSDCA 1970-029B)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1970-029B",
+      "label": "Verified"
+    },
+    {
+      "id": "lander-apollo12-surveyor3",
+      "topic": "lander",
+      "world": "moon",
+      "claim": "In November 1969, Apollo 12 landed less than 600 feet (about 180 meters) from Surveyor 3, a robot lander that had been on the Moon since April 1967. The astronauts brought about 10 kilograms of its parts home, including its TV camera and scoop.",
+      "detail": "NSSDCA Apollo 12 record: within about 180 m, ~10 kg of parts, Surveyor 3 landed 20 April 1967. NASA Pinpoint Mission page: about 535 feet northwest; parts were the TV camera, motorized scoop, and pieces of TV cable, aluminum tubing and glass. NASA Science image page gives Surveyor landing as April 19, 1967 (likely a time-zone difference).",
+      "source_title": "Apollo 12 Lunar Module / ALSEP (NASA NSSDCA 1969-099C); Apollo 12: The Pinpoint Mission (NASA)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+      "label": "Verified"
+    },
+    {
+      "id": "lander-lrv",
+      "topic": "lander",
+      "world": "moon",
+      "claim": "Astronauts drove three Lunar Roving Vehicles on the Moon, on Apollo 15, 16, and 17. Each rover had a mass of 210 kilograms, and Apollo 17's went 35.9 kilometers in total.",
+      "detail": "Apollo 15: 27.8 km; Apollo 16: 26.7 km; Apollo 17: 35.9 km. The NSSDCA page does not state where the rovers are now; do not claim they were left without another source.",
+      "source_title": "The Apollo Lunar Roving Vehicle (NASA NSSDCA)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_lrv.html",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-temperature",
+      "topic": "temperature",
+      "world": "mars",
+      "claim": "The temperature on Mars can be as high as 70°F (20°C) or as low as about -225°F (-153°C).",
+      "source_title": "Mars: Facts (NASA Science, updated Jul 10, 2026)",
+      "source_url": "https://science.nasa.gov/mars/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-gravity",
+      "topic": "mars",
+      "world": "mars",
+      "claim": "Gravity on Mars is about 38% of Earth's: 3.73 meters per second squared, compared with 9.82 on Earth.",
+      "detail": "NSSDCA Mars Fact Sheet, Mars/Earth ratio 0.380 (last updated 19 May 2025).",
+      "source_title": "Mars Fact Sheet (NASA NSSDCA)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-tonight-2026-11-14",
+      "topic": "mars",
+      "world": "mars",
+      "claim": "On the evening of November 14, 2026, Mars is about 196.8 million kilometers (about 122 million miles) from Earth.",
+      "detail": "From NASA JPL Horizons via the app's public/data/ephemeris.json (observer: Earth's centre, 500@399; retrieved 2026-11-14T19:28:46Z). Range 1.31585 AU at 7 PM EST (unix 1794700800), converted with 1 AU = 149,597,870.7 km. Arithmetic, not from the source: light takes about 10.9 minutes to cover that distance. Mars is 89.45% lit and 7.1 arcseconds across. Valid only for this date.",
+      "source_title": "NASA JPL Horizons System (Mars, target 499)",
+      "source_url": "https://ssd.jpl.nasa.gov/horizons/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-day",
+      "topic": "mars",
+      "world": "mars",
+      "claim": "Mars spins once every 24.6 hours. A day on Mars is called a sol.",
+      "source_title": "Mars: Facts (NASA Science, updated Jul 10, 2026)",
+      "source_url": "https://science.nasa.gov/mars/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-atmosphere-size",
+      "topic": "mars",
+      "world": "mars",
+      "claim": "Mars has a thin atmosphere made mostly of carbon dioxide, nitrogen, and argon. With a radius of 2,106 miles (3,390 kilometers), it is about half the size of Earth.",
+      "detail": "NSSDCA fact sheet: surface pressure about 6.36 millibars, varying from 4.0 to 8.7 mb by season.",
+      "source_title": "Mars: Facts (NASA Science, updated Jul 10, 2026)",
+      "source_url": "https://science.nasa.gov/mars/facts/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-dust-storms",
+      "topic": "dust",
+      "world": "mars",
+      "claim": "Local dust storms happen often on Mars and sometimes grow or merge into bigger regional storms. In mid-2018, a global dust storm wrapped around Mars, hiding much of the planet's surface from view.",
+      "source_title": "10 Things: Dust in the Wind (on Mars and Well Beyond) (NASA Science)",
+      "source_url": "https://science.nasa.gov/solar-system/10-things-dust-in-the-wind-on-mars-and-well-beyond/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-opportunity-dust-storm",
+      "topic": "lander",
+      "world": "mars",
+      "claim": "NASA's Opportunity rover landed on Mars on January 24, 2004. A severe Mars-wide dust storm covered its location in June 2018, and it never talked to Earth again after June 10, 2018.",
+      "detail": "Solar powered; NASA declared the mission over on Feb 13, 2019 (article date). Final resting spot: Perseverance Valley, Meridiani Planum.",
+      "source_title": "NASA's Opportunity Rover Mission on Mars Comes to End (NASA Science, Feb 13, 2019)",
+      "source_url": "https://science.nasa.gov/missions/mer/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-opportunity-record",
+      "topic": "lander",
+      "world": "mars",
+      "claim": "Opportunity was designed to last just 90 Martian days, but it explored for more than 15 years and traveled more than 28 miles (45 kilometers).",
+      "source_title": "NASA's Opportunity Rover Mission on Mars Comes to End (NASA Science, Feb 13, 2019)",
+      "source_url": "https://science.nasa.gov/missions/mer/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-spirit-dust-devils",
+      "topic": "dust",
+      "world": "mars",
+      "claim": "In March 2005, dust devils swept dust off the top of the Spirit rover's solar panels, raising its power from 60% to 93%.",
+      "source_title": "Spirit (NASA Science mission page)",
+      "source_url": "https://science.nasa.gov/mission/mer-spirit/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-spirit-end",
+      "topic": "lander",
+      "world": "mars",
+      "claim": "The Spirit rover landed in Gusev Crater in January 2004 and was planned to work for 90 Martian days. It got stuck in soft soil in 2009, stopped answering after March 22, 2010, and NASA ended recovery efforts on May 25, 2011.",
+      "detail": "NASA thinks excessive cold made its survival heaters ineffective. It drove about 4.8 miles (7.73 km). NASA Science lists landing as Jan 3, 2004 (US time); NASA GISS Mars24 lists Jan 4, 2004 UTC.",
+      "source_title": "Spirit (NASA Science mission page)",
+      "source_url": "https://science.nasa.gov/mission/mer-spirit/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-insight-dust",
+      "topic": "dust",
+      "world": "mars",
+      "claim": "Dust slowly piled up on the InSight lander's solar panels and reduced its energy until its batteries ran out. InSight last talked to Earth on December 15, 2022, after detecting 1,319 marsquakes.",
+      "detail": "Its final selfie (April 24, 2022) shows the lander covered with far more dust than its first selfie in December 2018 (PIA25287).",
+      "source_title": "NASA Retires InSight Mars Lander Mission After Years of Science (NASA, Dec 21, 2022)",
+      "source_url": "https://www.nasa.gov/missions/insight/nasa-retires-insight-mars-lander-mission-after-years-of-science/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-dust-devil-serpent",
+      "topic": "dust",
+      "world": "mars",
+      "claim": "A NASA orbiter photographed a Martian dust devil more than half a mile (800 meters) tall but only about 30 meters wide.",
+      "detail": "HiRISE camera on Mars Reconnaissance Orbiter, observed Feb 16, 2012 (PIA15116, 'The Serpent Dust Devil of Mars').",
+      "source_title": "The Serpent Dust Devil of Mars (NASA JPL, PIA15116)",
+      "source_url": "https://www.jpl.nasa.gov/images/pia15116-the-serpent-dust-devil-of-mars/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-ice-scarp",
+      "topic": "water",
+      "world": "mars",
+      "claim": "On Mars, a NASA orbiter spotted a steep slope where about 260 feet (80 meters) of buried water ice is exposed, like a cut-open layer cake.",
+      "detail": "HiRISE image PIA22077, Jan 11, 2018. 'Layer cake' is a kid simile, not from the source.",
+      "source_title": "Underground Martian Ice Deposit Exposed at Scarp (NASA JPL, PIA22077)",
+      "source_url": "https://www.jpl.nasa.gov/images/pia22077-underground-martian-ice-deposit-exposed-at-scarp/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-phoenix-ice",
+      "topic": "water",
+      "world": "mars",
+      "claim": "In June 2008, NASA's Phoenix lander dug a trench near Mars's north pole and saw dice-size bright crumbs vanish over four days. Scientists concluded they were water ice turning straight into vapor.",
+      "detail": "Trench nicknamed 'Dodo-Goldilocks'. Phoenix landed May 25, 2008 at 68.22 degrees north; end of mission Nov 2, 2008 (NASA Science mission page).",
+      "source_title": "Bright Chunks at Phoenix Lander's Mars Site Must Have Been Ice (NASA JPL, Jun 19, 2008)",
+      "source_url": "https://www.jpl.nasa.gov/news/bright-chunks-at-phoenix-landers-mars-site-must-have-been-ice/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-swim-ice-map",
+      "topic": "water",
+      "world": "mars",
+      "claim": "NASA's Subsurface Water Ice Mapping project (SWIM) makes maps of where missions have detected ice under the Martian ground. Scientists use them to help choose landing sites for the first astronauts on Mars.",
+      "detail": "PIA26045 map (Oct 26, 2023) covers from the equator to 60 degrees north.",
+      "source_title": "SWIM Map Shows Subsurface Water Ice on Mars (NASA JPL, PIA26045)",
+      "source_url": "https://www.jpl.nasa.gov/images/pia26045-swim-map-shows-subsurface-water-ice-on-mars/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-viking1",
+      "topic": "lander",
+      "world": "mars",
+      "claim": "NASA's Viking 1 made the first truly successful landing on Mars on July 20, 1976, and the lander worked until November 11, 1982.",
+      "detail": "Landed on the western slopes of Chryse Planitia. Contact was lost after a faulty command from Earth.",
+      "source_title": "Viking 1 (NASA Science mission page)",
+      "source_url": "https://science.nasa.gov/mission/viking-1/",
+      "label": "Verified"
+    },
+    {
+      "id": "mars-pathfinder-sojourner",
+      "topic": "lander",
+      "world": "mars",
+      "claim": "Mars Pathfinder landed in Ares Vallis on July 4, 1997, and delivered Sojourner, the first robot rover on Mars. Its last data came on September 27, 1997.",
+      "detail": "The lander was named the Carl Sagan Memorial Station.",
+      "source_title": "Mars Pathfinder (NASA Science mission page)",
+      "source_url": "https://science.nasa.gov/mission/mars-pathfinder/",
+      "label": "Verified"
+    },
+    {
+      "id": "ingenuity-first-flight",
+      "topic": "ingenuity",
+      "world": "mars",
+      "claim": "On April 19, 2021, NASA's Ingenuity helicopter became the first aircraft to achieve powered, controlled flight on another planet.",
+      "detail": "Ginny is a fictional character inspired by Ingenuity; Ingenuity itself never went to the Moon.",
+      "source_title": "Ingenuity Mars Helicopter (NASA Science, updated Sep 22, 2026)",
+      "source_url": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+      "label": "Verified"
+    },
+    {
+      "id": "ingenuity-record",
+      "topic": "ingenuity",
+      "world": "mars",
+      "claim": "Ingenuity was planned for no more than five test flights in 30 days, but it made 72 flights over nearly three years. It flew 128.8 minutes in total, covered 10.5 miles (17.0 kilometers), and reached up to 78.7 feet (24.0 meters) high.",
+      "source_title": "Ingenuity Mars Helicopter (NASA Science, updated Sep 22, 2026)",
+      "source_url": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+      "label": "Verified"
+    },
+    {
+      "id": "ingenuity-size",
+      "topic": "ingenuity",
+      "world": "mars",
+      "claim": "Ingenuity weighs 3.97 pounds (1.8 kilograms), and its rotors measure about 4 feet (1.2 meters) from tip to tip.",
+      "source_title": "Ingenuity Mars Helicopter (NASA Science, updated Sep 22, 2026)",
+      "source_url": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+      "label": "Verified"
+    },
+    {
+      "id": "ingenuity-last-flight",
+      "topic": "ingenuity",
+      "world": "mars",
+      "claim": "Ingenuity flew for the last time on January 18, 2024. Its rotor blades were damaged when it landed, so it could no longer fly, and NASA ended the mission on January 25, 2024.",
+      "source_title": "After Three Years on Mars, NASA's Ingenuity Helicopter Mission Ends (NASA, Jan 25, 2024)",
+      "source_url": "https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/",
+      "label": "Verified"
+    },
+    {
+      "id": "ingenuity-why-it-stopped",
+      "topic": "ingenuity",
+      "world": "mars",
+      "claim": "NASA's investigation found Ingenuity's navigation camera couldn't track the smooth, featureless sand ripples on its last flight. It hit a ripple hard, tipped, and all four rotor blades snapped off at their weakest point.",
+      "detail": "JPL release Dec 11, 2024: the inability of the navigation system to provide accurate data likely caused the chain of events. One blade fragment lies about 49 feet (15 meters) west of the helicopter.",
+      "source_title": "NASA Performs First Aircraft Accident Investigation on Another World (NASA JPL, Dec 11, 2024)",
+      "source_url": "https://www.jpl.nasa.gov/news/nasa-performs-first-aircraft-accident-investigation-on-another-world/",
+      "label": "Verified"
+    },
+    {
+      "id": "ingenuity-now",
+      "topic": "ingenuity",
+      "world": "mars",
+      "claim": "Ingenuity can't fly anymore, but it stays where it last landed, a spot the team nicknamed 'Valinor Hills' in Jezero Crater. As of December 2024, it still sent weather and test data to the Perseverance rover about once a week.",
+      "detail": "Perseverance photographed it there on Feb 4, 2024 from about 1,475 feet (450 meters) away (PIA26236). Current (2026) status not confirmed this session.",
+      "source_title": "NASA Performs First Aircraft Accident Investigation on Another World (NASA JPL, Dec 11, 2024); Perseverance Spots Ingenuity at Its Final Airfield (PIA26236)",
+      "source_url": "https://www.jpl.nasa.gov/images/pia26236-perseverance-spots-ingenuity-at-its-final-airfield/",
+      "label": "Verified"
+    },
+    {
+      "id": "ingenuity-photographs-backshell",
+      "topic": "jezero",
+      "world": "mars",
+      "claim": "On its 26th flight, April 19, 2022, Ingenuity photographed gear Perseverance had thrown away while landing: its backshell and a 70.5-foot (21.5-meter) parachute, the biggest ever used on Mars. The backshell hit the ground at about 78 mph (126 kph).",
+      "source_title": "NASA's Mars Helicopter Spots Gear That Helped Perseverance Rover Land (NASA JPL, Apr 27, 2022)",
+      "source_url": "https://www.jpl.nasa.gov/news/nasas-mars-helicopter-spots-gear-that-helped-perseverance-rover-land/",
+      "label": "Verified"
+    },
+    {
+      "id": "jezero-perseverance-landing",
+      "topic": "jezero",
+      "world": "mars",
+      "claim": "NASA's Perseverance rover launched on July 30, 2020, and landed in Jezero Crater on Mars on February 18, 2021.",
+      "detail": "NASA GISS Mars24 lists the Perseverance landing at 18.44 N, 77.45 E. The 4-decimal value 18.4447 N, 77.4508 E was not found on a NASA page this session.",
+      "source_title": "Mars 2020: Perseverance Rover (NASA Science, updated Oct 14, 2026)",
+      "source_url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+      "label": "Verified"
+    },
+    {
+      "id": "jezero-coordinates",
+      "topic": "jezero",
+      "world": "mars",
+      "claim": "Perseverance landed at about 18.44° north, 77.45° east on Mars.",
+      "source_title": "Mars24 Sunclock: Mars Landers (NASA GISS, updated Apr 3, 2025)",
+      "source_url": "https://www.giss.nasa.gov/tools/mars24/help/landers.html",
+      "label": "Verified"
+    },
+    {
+      "id": "jezero-ancient-lake",
+      "topic": "jezero",
+      "world": "mars",
+      "claim": "Jezero Crater is 28 miles (45 kilometers) wide. More than 3.5 billion years ago, rivers overflowed into it and filled it with water, making a lake with a river delta.",
+      "detail": "Perseverance's job there includes collecting core samples of Martian rock and regolith that a future mission might bring to Earth.",
+      "source_title": "Mars 2020: Perseverance Rover (NASA Science, updated Oct 14, 2026)",
+      "source_url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+      "label": "Verified"
+    },
+    {
+      "id": "suit-a7l-layers",
+      "topic": "spacesuit",
+      "world": "moon",
+      "claim": "Neil Armstrong's Apollo spacesuit was built from 12 synthetic materials in as many as 21 layers, and it was made to handle temperatures from -250°F to +230°F.",
+      "detail": "The same Smithsonian page also has a callout saying '25 layers of protective materials make up the suit'; the two counts conflict. Use 'as many as 21' (conservation text) or say 'more than 20 layers'.",
+      "source_title": "Armstrong Spacesuit (Smithsonian National Air and Space Museum)",
+      "source_url": "https://airandspace.si.edu/explore/stories/armstrong-suit",
+      "label": "Verified"
+    },
+    {
+      "id": "suit-a7l-beta-cloth",
+      "topic": "spacesuit",
+      "world": "moon",
+      "claim": "The outside of the Apollo suits was beta cloth, a white, non-flammable Teflon-coated fiberglass. Each suit was tailored for one astronaut and made by ILC Industries.",
+      "source_title": "Armstrong Spacesuit (Smithsonian National Air and Space Museum)",
+      "source_url": "https://airandspace.si.edu/explore/stories/armstrong-suit",
+      "label": "Verified"
+    },
+    {
+      "id": "suit-ilc-seamstresses",
+      "topic": "spacesuit",
+      "world": "moon",
+      "claim": "The Apollo spacesuits were cut, sewn, and put together by women working at the International Latex Corporation, and they worked with NASA engineers on the design. One of them, seamstress Jean Wilson, was misidentified in old photos as Hazel Fellows until the Smithsonian corrected the record.",
+      "detail": "Smithsonian 'Becoming Visible' story, an interview with curator Emily Margolis. Do not invent quotes from Jean Wilson or other seamstresses.",
+      "source_title": "Jean Wilson (Smithsonian, Becoming Visible)",
+      "source_url": "https://becomingvisible.si.edu/stories/hazel-fellows",
+      "label": "Verified"
+    },
+    {
+      "id": "suit-biosuit-counterpressure",
+      "topic": "spacesuit",
+      "world": "both",
+      "claim": "Today's spacesuits are like a balloon of gas giving the body one-third of an atmosphere of pressure. MIT's BioSuit research tries a different idea, mechanical counterpressure: a tight suit that presses directly on the skin instead.",
+      "detail": "MIT News, Sep 18, 2014 (Jennifer Chu): coils of nickel-titanium shape-memory alloy contract when heated to tighten the garment; still a research prototype, not a flight suit. Funded by NASA and the MIT Portugal Program. Source is MIT, not NASA.",
+      "source_title": "Shrink-wrapping spacesuits (MIT News, Sep 18, 2014)",
+      "source_url": "https://news.mit.edu/2014/second-skin-spacesuits-0918",
+      "label": "Verified"
+    },
+    {
+      "id": "a11-pse-purpose",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "Apollo 11 left a Passive Seismic Experiment to monitor lunar seismic activity (moonquakes), detect meteoroid impacts, and measure free oscillations of the Moon.",
+      "source_title": "Passive Seismic Experiment, Apollo 11 (NASA NSSDCA 1969-059C-03)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1969-059C-03",
+      "label": "Verified"
+    },
+    {
+      "id": "pse-interior-goal",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "The main goal of the Apollo seismometers was to use their data to work out the Moon's internal structure, physical state, and tectonic activity.",
+      "source_title": "Passive Seismic Experiment, Apollo 14 (NASA NSSDCA 1971-008C-04)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1971-008C-04",
+      "label": "Verified"
+    },
+    {
+      "id": "pse-impacts-calibration",
+      "topic": "seismic",
+      "world": "moon",
+      "claim": "Spent S-IVB rocket stages and Lunar Module ascent stages were crashed into the Moon on purpose so the seismometers had impacts of known time and place to measure.",
+      "source_title": "Passive Seismic Experiment, Apollo 14 (NASA NSSDCA 1971-008C-04)",
+      "source_url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1971-008C-04",
+      "label": "Verified"
+    }
+  ]
+}

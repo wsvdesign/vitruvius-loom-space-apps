@@ -1,0 +1,32 @@
+{
+  "label": "SIMULATION · physics from NASA studies",
+  "slowdown": 200,
+  "caption": "A landing rocket's blast, not wind, throws this dust out flat, fast and straight. Shown 200× slower.",
+  "facts": [
+    {
+      "claim": "Apollo landing videos show the rocket blast threw dust out in a flat sheet only about 1 to 3 degrees above the ground.",
+      "source_title": "Immer, Lane, Metzger & Clements (NASA Kennedy Space Center), Apollo Video Photogrammetry Estimation of Plume Impingement Effects",
+      "source_url": "https://ntrs.nasa.gov/citations/20130012063"
+    },
+    {
+      "claim": "The dust flew at about 300 to 2,000 metres per second, and the smallest grains went fastest. With no air to slow it down, it kept going until it hit the ground far away. Some went almost all the way around the Moon.",
+      "source_title": "NASA, Recommendations to Space-Faring Entities: How to Protect and Preserve the Historic and Scientific Value of U.S. Government Lunar Artifacts (2011)",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2017/10/617743main_nasa-usg_lunar_historic_sites_reva-508.pdf"
+    },
+    {
+      "claim": "Bigger pieces, gravel and rocks 1 to 10 cm across, moved much slower, about 5 to 50 metres per second, and landed up to 1.5 km away.",
+      "source_title": "NASA, Recommendations to Space-Faring Entities: How to Protect and Preserve the Historic and Scientific Value of U.S. Government Lunar Artifacts (2011)",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2017/10/617743main_nasa-usg_lunar_historic_sites_reva-508.pdf"
+    },
+    {
+      "claim": "Apollo 12 landed 155 m from an older robot lander, Surveyor 3. The blast sandblasted and pitted Surveyor, even though only the thin edge of the spray reached it.",
+      "source_title": "NASA, Recommendations to Space-Faring Entities: How to Protect and Preserve the Historic and Scientific Value of U.S. Government Lunar Artifacts (2011)",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2017/10/617743main_nasa-usg_lunar_historic_sites_reva-508.pdf"
+    },
+    {
+      "claim": "Fine dust moves so fast that the Moon's gravity barely bends its path for the first 20 to 30 metres, so it flies in almost straight lines.",
+      "source_title": "Lane & Metzger (NASA Kennedy Space Center), Ballistics Model for Particles on a Horizontal Plane in a Vacuum Propelled by a Vertically Impinging Gas Jet",
+      "source_url": "https://ntrs.nasa.gov/citations/20100031187"
+    }
+  ]
+}

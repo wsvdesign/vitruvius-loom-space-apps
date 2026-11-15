@@ -1,0 +1,39 @@
+{
+  "voice": {
+    "provider": "ElevenLabs",
+    "name": "",
+    "voiceId": "",
+    "model": "eleven_multilingual_v2",
+    "note": "Natalie picks the voice from samples; empty means captions only"
+  },
+  "showLinesInReview": true,
+  "reviewTag": "Lakota lines in review with a Lakota reader",
+  "landing": [
+    { "id": "wow", "text": "Whoa… this is cool.", "cultural": false },
+    {
+      "id": "intro",
+      "text": "I'm Emanuel. You can call me Manny. I'm Lakota, and I have a lot of questions about the sky.",
+      "cultural": true,
+      "review": "pending",
+      "reviewer": "Lakota reader (named only with her agreement)",
+      "source": "Manny MVP PRD, draft line C-01"
+    },
+    {
+      "id": "moon-word",
+      "text": "In Lakota, the Moon is Haŋwí: “evening light.” A star is Wicahpi.",
+      "cultural": true,
+      "review": "pending",
+      "reviewer": "Lakota reader (named only with her agreement)",
+      "source": "PRD V1.2, section 4a (draft); spellings follow the reviewer"
+    },
+    {
+      "id": "come-look",
+      "text": "There are stories people passed down, and there are stories these machines can help us discover. Come look with me.",
+      "cultural": true,
+      "review": "pending",
+      "reviewer": "Lakota reader (named only with her agreement)",
+      "source": "Manny MVP PRD, draft line C-05"
+    }
+  ],
+  "go": { "id": "go", "text": "Let's go.", "cultural": false }
+}

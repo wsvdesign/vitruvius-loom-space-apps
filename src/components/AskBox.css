@@ -1,0 +1,132 @@
+/* "Ask Ginny anything". Sits inside a glass card (e.g. the ask panel); no position of its own. */
+
+.askbox {
+  pointer-events: auto;
+  width: 100%;
+  margin: 12px 0 0;
+  color: var(--ink);
+}
+
+.askbox-field { border-top: 1px solid var(--hair); padding-top: 12px; }
+
+.askbox-input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: calc(17px * var(--ts));
+  line-height: 1.4;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.askbox-input::placeholder { color: var(--mute); opacity: 1; }
+.askbox-input:hover { border-color: var(--mute); }
+.askbox-input:focus-visible { outline: 2px solid var(--holo); outline-offset: 2px; border-color: var(--holo-deep); }
+
+.askbox-hint {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: calc(12px * var(--ts));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.askbox-count { letter-spacing: 0.06em; }
+.askbox-count.full { color: var(--ink); }
+
+.askbox-out:empty { display: none; }
+.askbox-out { margin-top: 12px; }
+
+.askbox-q {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: calc(12.5px * var(--ts));
+  letter-spacing: 0.06em;
+  color: var(--mute);
+  overflow-wrap: anywhere;
+}
+
+.askbox-thinking {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: calc(13px * var(--ts));
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--holo-deep);
+}
+.askbox-dots i { font-style: normal; animation: askbox-blink 1.2s infinite; }
+.askbox-dots i:nth-child(2) { animation-delay: 0.2s; }
+.askbox-dots i:nth-child(3) { animation-delay: 0.4s; }
+@keyframes askbox-blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+
+.askbox-tag {
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: calc(12px * var(--ts));
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--holo-deep);
+}
+
+.askbox-answer {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: calc(18.5px * var(--ts));
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.askbox-sources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: calc(12px * var(--ts));
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.askbox-sources li { padding: 2px 0; }
+.askbox-sources li::before { content: 'Source · '; }
+.askbox-sources a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--holo-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.askbox-sources a:focus-visible { outline: 2px solid var(--holo); outline-offset: 2px; border-radius: 2px; }
+
+.askbox-error {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: calc(16px * var(--ts));
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .askbox-dots i { animation: none; opacity: 1; }
+  .askbox-input { transition: none; }
+}
+
+.askbox-privacy {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: calc(12px * var(--ts));
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--mute);
+}
